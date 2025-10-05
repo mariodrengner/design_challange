@@ -1,9 +1,12 @@
 import 'package:design_challenge/app/assets.dart';
+import 'package:design_challenge/features/detail/presentation/detail_screen.dart';
 import 'package:design_challenge/routes/app_routes.dart';
 import 'package:design_challenge/shared/widgets/glass_card.dart';
+import 'package:design_challenge/shared/widgets/gradient_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:math';
 
 import '/shared/widgets/glass_chip.dart';
 
@@ -30,6 +33,7 @@ class MainScreen extends StatelessWidget {
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, eget aliquam nisl nisl eget nisl.",
         "price": 8.99,
         "image": "assets/images/cupcake_cat.png",
+        "likes": 200
       },
       {
         "id": 2,
@@ -38,6 +42,7 @@ class MainScreen extends StatelessWidget {
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, eget aliquam nisl nisl eget nisl.",
         "price": 8.99,
         "image": "assets/images/icecream.png",
+        "likes": 165
       },
       {
         "id": 3,
@@ -46,6 +51,7 @@ class MainScreen extends StatelessWidget {
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, eget aliquam nisl nisl eget nisl.",
         "price": 3.99,
         "image": "assets/images/icecream_stick.png",
+        "likes": 310
       },
       {
         "id": 4,
@@ -54,6 +60,7 @@ class MainScreen extends StatelessWidget {
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget aliquam aliquet, nisl nisl aliquam nisl, eget aliquam nisl nisl eget nisl.",
         "price": 3.99,
         "image": "assets/images/icecream_cone.png",
+        "likes": 290
       },
     ];
 
@@ -95,7 +102,9 @@ class MainScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                Padding(
+                const Spacer(),
+                Container(
+                  height: 260,
                   padding: const EdgeInsets.all(20),
                   child: Stack(
                     clipBehavior: Clip.none,
@@ -103,26 +112,39 @@ class MainScreen extends StatelessWidget {
                       GlassCard(
                         tilted: true,
                         opacity: 0.04,
+                        padding: const EdgeInsets.all(20),
                         child: Stack(
                           children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text('Angi’s Yummy Burger ', style: theme.textTheme.headlineMedium),
-                                Text('Delish vegan burger that tastes like heaven', style: theme.textTheme.headlineSmall),
-                                Text('13.99 €'),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: theme.colorScheme.primary,
-                                    foregroundColor: theme.colorScheme.onPrimary,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            SizedBox(
+                              width: double.infinity,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Angi’s Yummy Burger ', style: theme.textTheme.headlineMedium),
+                                  SizedBox(height: 8),
+                                  Padding(
+                                    padding: EdgeInsetsGeometry.only(right: 180),
+                                    child: Text('Delish vegan burger that tastes like heaven', style: theme.textTheme.bodyMedium),
                                   ),
-                                  onPressed: () {
-                                    context.push(AppRoutes.main.path);
-                                  },
-                                  child: Text('Add to order'),
-                                ),
-                              ],
+                                  SizedBox(height: 8),
+                                  Text('13.99 €', style: theme.textTheme.labelLarge),
+                                  const Spacer(),
+                                  GradientButton(
+                                    onPressed: () {},
+                                    child: Text('Add to order'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              right: 0,
+                              child: Row(
+                                children: [
+                                  Icon(Icons.star, color: Color.fromRGBO(234, 113, 197, 1), size: 15),
+                                  const SizedBox(width: 4),
+                                  Text('4.8')
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -134,40 +156,65 @@ class MainScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 30),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text('We recommend', style: theme.textTheme.displaySmall),
                 ),
-                Expanded(
-                  // height: 262,
+                SizedBox(
+                  height: 260,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     itemCount: productData.length,
-                    separatorBuilder: (context, index) => const SizedBox(width: 20),
+                    separatorBuilder: (context, index) => const SizedBox(width: 24),
                     itemBuilder: (context, index) {
                       final product = productData[index];
                       final productId = product['id'];
 
                       return GlassCard(
                         onTap: () {
-                          // Nutze push für Drill-Down/Modal Verhalten
-                          context.push('${AppRoutes.main.path}/detail/$productId');
+                          context.push(
+                            '${AppRoutes.main.path}/detail/$productId',
+                            extra: product,
+                          );
                         },
-                        opacity: 0.04,
+                        opacity: 0.5,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment(0.9, -1.0),
+                            end: Alignment(-0.9, 1.0),
+                            colors: [
+                              Colors.white.withValues(alpha: 0),
+                              const Color.fromRGBO(144, 140, 245, 0.74),
+                              const Color.fromRGBO(140, 91, 234, 0.74),
+                            ],
+                            stops: const [0.0, 0.47, 0.96],
+                          ),
+                        ),
                         child: SizedBox(
                           width: 190,
-                          height: double.infinity,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.asset('${product['image']}'),
+                              Image.asset('${product['image']}', width: 154, height: 154, fit: BoxFit.cover),
                               Text('${product['name']}', style: theme.textTheme.headlineMedium),
                               Text('${product['subtitle']}', style: theme.textTheme.bodyMedium),
-                              Text('${product['price']} €'),
+                              Row(
+                                children: [
+                                  Text('${product['price']} €'),
+                                  const Spacer(),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.favorite, size: 16, color: Colors.white),
+                                      const SizedBox(width: 4),
+                                      Text('${product['likes']}'),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),

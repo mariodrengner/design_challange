@@ -3,26 +3,28 @@ import 'package:flutter/material.dart';
 
 class GlassCard extends StatelessWidget {
   final Widget child;
-  final bool tilted; // use exact SVG-shape when true
+  final bool tilted; // use SVG-shape
   final double blurSigma;
-  final double opacity; // 0..1
-  final double borderOpacity; // 0..1
+  final double opacity;
+  final double borderOpacity;
   final double borderWidth;
   final BorderRadius? borderRadius;
   final EdgeInsetsGeometry padding;
   final VoidCallback? onTap;
+  final Decoration? decoration;
 
   const GlassCard({
     super.key,
     required this.child,
     this.tilted = false,
-    this.blurSigma = 30.0,
-    this.opacity = 0.2,
+    this.blurSigma = 20.0,
+    this.opacity = 0.02,
     this.borderOpacity = 0.5,
     this.borderWidth = 1.5,
     this.borderRadius,
     this.padding = const EdgeInsets.all(16),
     this.onTap,
+    this.decoration,
   });
 
   @override
@@ -47,16 +49,16 @@ class GlassCard extends StatelessWidget {
       );
     }
 
-    Widget glassStack = Stack(
-      alignment: Alignment.center,
-      children: [
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
-          child: Container(color: Colors.transparent),
+    Widget glassStack = BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
+      child: Container(
+        alignment: Alignment.center,
+        color: bgColor,
+        child: Container(
+          decoration: decoration,
+          child: contentLayer,
         ),
-        Container(color: bgColor),
-        contentLayer,
-      ],
+      ),
     );
 
     if (tilted) {

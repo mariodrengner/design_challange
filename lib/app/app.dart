@@ -29,11 +29,12 @@ class App extends StatelessWidget {
                 path: 'detail/:id',
                 // pageBuilder instead of builder
                 pageBuilder: (context, state) {
-                  final id = int.parse(state.pathParameters['id']!);
+                  final product = state.extra as Map<String, dynamic>;
                   // show DetailScreen as modal
                   return ModalBottomSheetPage(
-                    key: state.pageKey, // Wichtig für GoRouter
-                    child: DetailScreen(id: id),
+                    key: state.pageKey, // für GoRouter
+                    backgroundColor: Colors.transparent,
+                    child: DetailScreen(product: product),
                   );
                 },
               ),
