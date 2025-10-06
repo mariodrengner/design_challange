@@ -18,28 +18,44 @@ class AppGradients {
     center: Alignment.center,
     radius: 1.0,
   );
+
+  // Button Gradients
+  static const Gradient buttonPrimaryRadial = RadialGradient(
+    center: Alignment(0.9, 0.4),
+    radius: 2.0,
+    colors: [Color(0xFFF69EA3), Color(0xFFE970C4)],
+  );
+
+  static const Gradient buttonPrimaryLinearOverlay = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xE5FEC8F1),
+      Color(0x00ED92D7),
+    ],
+    stops: [0.0, 0.4],
+  );
+
+  static const Gradient buttonSecondaryRadial = RadialGradient(
+    center: Alignment(0.9, 0.4),
+    radius: 2.0,
+    colors: [Color(0xFF2575FC), Color(0xFF6A11CB)],
+  );
+
+  static const Gradient buttonSecondaryLinearOverlay = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xE5ADD8E6), // Light Blue with opacity
+      Color(0x002575FC),
+    ],
+    stops: [0.0, 0.4],
+  );
+
+  static const Gradient buttonBorder = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [Color(0x80000000), Color(0x80FFFFFF)],
+    transform: GradientRotation(0.26), // 14.89 degrees
+  );
 }
-
-// /* Card */
-
-// box-sizing: border-box;
-
-// /* Auto layout */
-// display: flex;
-// flex-direction: column;
-// justify-content: center;
-// align-items: center;
-// padding: 90px;
-// gap: 90px;
-
-// position: absolute;
-// width: 1020px;
-// height: 624px;
-// left: calc(50% - 1020px/2);
-// top: 1656px;
-
-// background: rgba(255, 255, 255, 0.01);
-// border: 3px solid rgba(255, 255, 255, 0.3);
-// backdrop-filter: blur(45px);
-// /* Note: backdrop-filter has minimal browser support */
-// border-radius: 90px;

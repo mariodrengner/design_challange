@@ -1,5 +1,7 @@
 class AppAssets {
   static const String bg = 'assets/images/bg.svg';
+  static const String bgStart = 'assets/images/bg/start.png';
+  static const String bgMain = 'assets/images/bg/main.png';
   static const String swoosh = 'assets/images/swoosh.svg';
   static const String burger = 'assets/images/burger.png';
   static const String cupCakeChick = 'assets/images/cupcake_chick.png';

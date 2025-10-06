@@ -47,6 +47,12 @@ class AppFonts {
       fontSize: 13,
       color: AppColors.text,
     ),
+    headlineSmall: TextStyle(
+      fontFamily: primaryFont,
+      fontWeight: FontWeight.bold,
+      fontSize: 17,
+      color: AppColors.text,
+    ),
     bodyLarge: TextStyle(
       fontFamily: accentFont,
       fontSize: 13,

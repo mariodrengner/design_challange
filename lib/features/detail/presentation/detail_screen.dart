@@ -96,8 +96,8 @@ class _DetailScreenState extends State<DetailScreen> {
                                     ),
                                     const SizedBox(height: 20),
                                     Text(
-                                      widget.product['price'].toString(),
-                                      style: theme.textTheme.headlineLarge,
+                                      '􁑐 ${widget.product['price'].toString()}',
+                                      style: theme.textTheme.headlineSmall,
                                       textAlign: TextAlign.center,
                                     ),
                                     const Divider( // Replaced LinearBorder with Divider
@@ -114,6 +114,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                           children: [
                                             Text('Ingredients'),
                                             Row(
+                                              spacing: 5,
                                               children: [
                                                 Image.asset('assets/images/ingredients/gluten-free.png', height: 19, width: 19),
                                                 Image.asset('assets/images/ingredients/sugar-free.png', height: 19, width: 19),
@@ -125,7 +126,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                         ),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
-                                          spacing: 5,
+                                          spacing: 7,
                                           children: [
                                             Text('Reviews', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
                                             Row(

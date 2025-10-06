@@ -10,8 +10,15 @@ import 'dart:math';
 
 import '/shared/widgets/glass_chip.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +73,9 @@ class MainScreen extends StatelessWidget {
 
     return Stack(
         children: [
-          SvgPicture.asset(AppAssets.bg, alignment: Alignment.topCenter),
-          SvgPicture.asset(AppAssets.swoosh, alignment: Alignment.topCenter),
+          // SvgPicture.asset(AppAssets.bg, alignment: Alignment.topCenter),
+          // SvgPicture.asset(AppAssets.swoosh, alignment: Alignment.topCenter),
+          Image.asset(AppAssets.bgMain),
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,15 +97,25 @@ class MainScreen extends StatelessWidget {
                     separatorBuilder: (context, index) => const SizedBox(width: 12),
                     itemBuilder: (context, index) {
                       final label = categories[index];
-                      final selected = index == 0;
+                      final selected = index == _selectedIndex;
 
                       return GlassChip(
                         label: label,
                         selected: selected,
                         onTap: () {
+                          setState(() {
+                            _selectedIndex = index;
+                          });
                           debugPrint("Ausgewählt: $label");
                         },
                         borderRadius: BorderRadius.circular(30),
+                        selectedTextColor: const Color.fromRGBO(48, 44, 35, 1),
+                        leading: index == 0
+                            ? Icon(Icons.restaurant, color: selected ? const Color.fromRGBO(48, 44, 35, 1) : Colors.white70, size: 18)
+                            : null,
+                        trailing: index == 0
+                            ? Icon(Icons.keyboard_arrow_down, color: selected ? const Color.fromRGBO(48, 44, 35, 1) : Colors.white70, size: 18)
+                            : null,
                       );
                     },
                   ),
@@ -150,8 +168,8 @@ class MainScreen extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: -40, right: 40,
-                        child: Image.asset('assets/images/burger.png', width: 200, height: 200)
+                        bottom: -30, right: 0,
+                        child: Image.asset('assets/images/burger.png', width: 217, height: 217)
                       ),
                     ],
                   ),
@@ -159,7 +177,7 @@ class MainScreen extends StatelessWidget {
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text('We recommend', style: theme.textTheme.displaySmall),
+                  child: Text('We Recommend', style: theme.textTheme.displaySmall),
                 ),
                 SizedBox(
                   height: 260,
@@ -202,13 +220,14 @@ class MainScreen extends StatelessWidget {
                               Image.asset('${product['image']}', width: 154, height: 154, fit: BoxFit.cover),
                               Text('${product['name']}', style: theme.textTheme.headlineMedium),
                               Text('${product['subtitle']}', style: theme.textTheme.bodyMedium),
+                              const Spacer(),
                               Row(
                                 children: [
-                                  Text('${product['price']} €'),
+                                  Text('${product['price']} €', style: theme.textTheme.labelLarge),
                                   const Spacer(),
                                   Row(
                                     children: [
-                                      const Icon(Icons.favorite, size: 16, color: Colors.white),
+                                      const Icon(Icons.favorite_outline, size: 16, color: Colors.white),
                                       const SizedBox(width: 4),
                                       Text('${product['likes']}'),
                                     ],

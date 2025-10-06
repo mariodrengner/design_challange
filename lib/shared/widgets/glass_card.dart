@@ -95,13 +95,11 @@ class _TiltedWrapper extends StatelessWidget {
   final Widget child;
   final Color borderColor;
   final double borderWidth;
-  final BorderRadius? borderRadius;
 
   const _TiltedWrapper({
     required this.child,
     required this.borderColor,
     required this.borderWidth,
-    this.borderRadius,
   });
 
   @override
