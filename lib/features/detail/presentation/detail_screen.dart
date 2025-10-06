@@ -1,5 +1,6 @@
 
 import 'package:design_challenge/app/assets.dart';
+import 'package:design_challenge/shared/widgets/price_display.dart';
 import 'package:flutter/material.dart';
 import 'package:design_challenge/shared/widgets/glass_card.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -75,13 +76,14 @@ class _DetailScreenState extends State<DetailScreen> {
                     padding: const EdgeInsets.fromLTRB(30, 140, 30, 40),
                     child: Column(
                       children: [
-                        Expanded(
-                          child: GlassCard(
-                            opacity: 0.02,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: SingleChildScrollView(
-                                child: Column(
+                        GlassCard(
+                          opacity: 0.02,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Column(
                                   children: [
                                     Text(
                                       widget.product['name'],
@@ -95,12 +97,11 @@ class _DetailScreenState extends State<DetailScreen> {
                                       textAlign: TextAlign.center,
                                     ),
                                     const SizedBox(height: 20),
-                                    Text(
-                                      '􁑐 ${widget.product['price'].toString()}',
-                                      style: theme.textTheme.headlineSmall,
-                                      textAlign: TextAlign.center,
+                                    PriceDisplay(
+                                      price: widget.product['price'],
+                                      style: theme.textTheme.headlineSmall
                                     ),
-                                    const Divider( // Replaced LinearBorder with Divider
+                                    const Divider(
                                       color: Colors.white54,
                                       height: 60,
                                       thickness: 0.5,
@@ -113,13 +114,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                           spacing: 5,
                                           children: [
                                             Text('Ingredients'),
+                                            SizedBox(height: 4),
                                             Row(
                                               spacing: 5,
                                               children: [
-                                                Image.asset('assets/images/ingredients/gluten-free.png', height: 19, width: 19),
-                                                Image.asset('assets/images/ingredients/sugar-free.png', height: 19, width: 19),
-                                                Image.asset('assets/images/ingredients/low-fat.png', height: 19, width: 19),
-                                                Image.asset('assets/images/ingredients/calories.png', height: 19, width: 19),
+                                                Image.asset(AppAssets.ingredientsGlutenFree, height: 19, width: 19),
+                                                Image.asset(AppAssets.ingredientsSugarFree, height: 19, width: 19),
+                                                Image.asset(AppAssets.ingredientsLowFat, height: 19, width: 19),
+                                                Image.asset(AppAssets.ingredientsCalories, height: 19, width: 19),
                                               ],
                                             ),
                                           ],
@@ -146,11 +148,22 @@ class _DetailScreenState extends State<DetailScreen> {
                                     ),
                                   ],
                                 ),
-                              ),
+                                Positioned(
+                                  top: -10,
+                                  right: 0,
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.favorite_outline, color: Colors.white70, size: 15),
+                                      const SizedBox(width: 4),
+                                      Text(widget.product['likes'].toString(), style: TextStyle(color: Colors.white70))
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        const SizedBox(height: 26),
+                        const Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -219,12 +232,24 @@ class _DetailScreenState extends State<DetailScreen> {
                         const SizedBox(height: 30),
                         GradientButton(
                           onPressed: () {},
-                          child: Text(
-                            'Add to order for ${(price * _quantity).toStringAsFixed(2)} €',
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Add to order for ',
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              PriceDisplay(
+                                price: price * _quantity,
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],

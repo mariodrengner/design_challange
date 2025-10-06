@@ -1,5 +1,6 @@
 import 'package:design_challenge/shared/widgets/gradient_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '/routes/app_routes.dart';
 import '/app/assets.dart';
@@ -15,18 +16,23 @@ class StartScreen extends StatelessWidget {
 
     return Stack(
       children: [
+        Image.asset(width: size.width, height: size.height, fit: BoxFit.cover, AppAssets.bgStart),
         Transform.translate(
-          offset: Offset(size.width * 0.13, size.height * 0.1),
+          offset: Offset(size.width * 0.13, size.height * 0.12),
           child: Image.asset(width: 540, height: 540, fit: BoxFit.cover, AppAssets.cupCakeChick),
+        ),
+        Transform.translate(
+          offset: Offset(0, size.height * 0.52),
+          child: SvgPicture.asset(AppAssets.snackText, width: size.width, fit: BoxFit.cover),
         ),
         Column(
           children: [
             const Spacer(),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 64),
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: GlassCard(
                 opacity: 0.02,
-                padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 40.0),
+                padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 30.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -34,7 +40,7 @@ class StartScreen extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text('Explore Angi’s most popular snack selection and get instantly happy.',
                         style: theme.textTheme.bodyLarge, textAlign: TextAlign.center),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -58,6 +64,7 @@ class StartScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 84),
           ],
         ),
       ],
