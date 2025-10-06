@@ -14,9 +14,8 @@ class ModalBottomSheetPage<T> extends Page<T> {
   Route<T> createRoute(BuildContext context) {
     return ModalBottomSheetRoute<T>(
       builder: (context) {
-        return Container(
+        return SizedBox(
           height: MediaQuery.of(context).size.height * 0.8,
-          width: MediaQuery.of(context).size.width,
           child: child,
         );
       },
