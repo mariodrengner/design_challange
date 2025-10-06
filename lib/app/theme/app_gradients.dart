@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppGradients {
-  static const LinearGradient primary = LinearGradient(
-    colors: [Color(0xFF6A11CB), Color(0xFF2575FC)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
-
-  static const LinearGradient success = LinearGradient(
-    colors: [Color(0xFF00C853), Color(0xFFB2FF59)],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-  );
-
-  static const RadialGradient background = RadialGradient(
-    colors: [Color(0xFFFFFDE7), Color(0xFFFFF59D)],
-    center: Alignment.center,
-    radius: 1.0,
-  );
-
   // Button Gradients
   static const Gradient buttonPrimaryRadial = RadialGradient(
     center: Alignment(0.9, 0.4),
