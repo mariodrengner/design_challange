@@ -58,23 +58,43 @@ class RecommendedSnacks extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(child: Image.asset('${product['image']}', width: 154, height: 154, fit: BoxFit.cover)),
+                      Center(
+                        child: Image.asset(
+                          '${product['image']}',
+                          width: 154,
+                          height: 154,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       const Spacer(),
-                      Text('${product['name']}', style: theme.textTheme.headlineMedium),
-                      Text('${product['subtitle']}', style: theme.textTheme.bodyMedium),
+                      Text(
+                        '${product['name']}',
+                        style: theme.textTheme.headlineMedium,
+                      ),
+                      Text(
+                        '${product['subtitle']}',
+                        style: theme.textTheme.bodyMedium,
+                      ),
                       const Spacer(),
                       Row(
                         children: [
                           PriceDisplay(
                             price: product['price'],
-                            style: theme.textTheme.labelLarge
+                            style: theme.textTheme.labelLarge,
                           ),
                           const Spacer(),
                           Row(
                             children: [
-                              const Icon(Icons.favorite_outline, size: 16, color:AppColors.textGrey60),
+                              const Icon(
+                                Icons.favorite_outline,
+                                size: 16,
+                                color: AppColors.textGrey60,
+                              ),
                               const SizedBox(width: 4),
-                              Text('${product['likes']}', style: theme.textTheme.bodyLarge),
+                              Text(
+                                '${product['likes']}',
+                                style: theme.textTheme.bodyLarge,
+                              ),
                             ],
                           ),
                         ],

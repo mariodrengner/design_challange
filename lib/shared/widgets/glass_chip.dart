@@ -26,7 +26,9 @@ class GlassChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final br = borderRadius ?? BorderRadius.circular(30);
-    final textColor = selected ? selectedTextColor : Colors.white.withValues(alpha: 0.6);
+    final textColor = selected
+        ? selectedTextColor
+        : Colors.white.withValues(alpha: 0.6);
 
     return ClipRRect(
       borderRadius: br,
@@ -50,12 +52,12 @@ class GlassChip extends StatelessWidget {
               onTap: onTap,
               splashColor: Colors.white.withValues(alpha: 0.1),
               highlightColor: Colors.white.withValues(alpha: 0.05),
-              customBorder: RoundedRectangleBorder(
-                borderRadius: br,
-              ),
+              customBorder: RoundedRectangleBorder(borderRadius: br),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

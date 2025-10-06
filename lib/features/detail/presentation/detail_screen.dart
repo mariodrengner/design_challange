@@ -1,4 +1,3 @@
-
 import 'package:design_challenge/app/assets.dart';
 import 'package:design_challenge/shared/widgets/price_display.dart';
 import 'package:flutter/material.dart';
@@ -48,10 +47,7 @@ class _DetailScreenState extends State<DetailScreen> {
               child: Stack(
                 children: [
                   Positioned.fill(
-                    child: SvgPicture.asset(
-                      AppAssets.bg,
-                      fit: BoxFit.cover,
-                    ),
+                    child: SvgPicture.asset(AppAssets.bg, fit: BoxFit.cover),
                   ),
                 ],
               ),
@@ -99,7 +95,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                     const SizedBox(height: 20),
                                     PriceDisplay(
                                       price: widget.product['price'],
-                                      style: theme.textTheme.headlineSmall
+                                      style: theme.textTheme.headlineSmall,
                                     ),
                                     const Divider(
                                       color: Colors.white54,
@@ -107,10 +103,12 @@ class _DetailScreenState extends State<DetailScreen> {
                                       thickness: 0.5,
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           spacing: 5,
                                           children: [
                                             Text('Ingredients'),
@@ -118,28 +116,79 @@ class _DetailScreenState extends State<DetailScreen> {
                                             Row(
                                               spacing: 5,
                                               children: [
-                                                Image.asset(AppAssets.ingredientsGlutenFree, height: 19, width: 19),
-                                                Image.asset(AppAssets.ingredientsSugarFree, height: 19, width: 19),
-                                                Image.asset(AppAssets.ingredientsLowFat, height: 19, width: 19),
-                                                Image.asset(AppAssets.ingredientsCalories, height: 19, width: 19),
+                                                Image.asset(
+                                                  AppAssets
+                                                      .ingredientsGlutenFree,
+                                                  height: 19,
+                                                  width: 19,
+                                                ),
+                                                Image.asset(
+                                                  AppAssets
+                                                      .ingredientsSugarFree,
+                                                  height: 19,
+                                                  width: 19,
+                                                ),
+                                                Image.asset(
+                                                  AppAssets.ingredientsLowFat,
+                                                  height: 19,
+                                                  width: 19,
+                                                ),
+                                                Image.asset(
+                                                  AppAssets.ingredientsCalories,
+                                                  height: 19,
+                                                  width: 19,
+                                                ),
                                               ],
                                             ),
                                           ],
                                         ),
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           spacing: 7,
                                           children: [
-                                            Text('Reviews', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
+                                            Text(
+                                              'Reviews',
+                                              style: TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
                                             Row(
                                               children: [
-                                                Icon(Icons.star, color: Colors.white, size: 12),
-                                                Icon(Icons.star, color: Colors.white, size: 12),
-                                                Icon(Icons.star, color: Colors.white, size: 12),
-                                                Icon(Icons.star, color: Colors.white, size: 12),
-                                                Icon(Icons.star_border, color: Colors.white, size: 12),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: Colors.white,
+                                                  size: 12,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: Colors.white,
+                                                  size: 12,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: Colors.white,
+                                                  size: 12,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  color: Colors.white,
+                                                  size: 12,
+                                                ),
+                                                Icon(
+                                                  Icons.star_border,
+                                                  color: Colors.white,
+                                                  size: 12,
+                                                ),
                                                 const SizedBox(width: 10),
-                                                Text('4.0', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800))
+                                                Text(
+                                                  '4.0',
+                                                  style: TextStyle(
+                                                    fontSize: 11,
+                                                    fontWeight: FontWeight.w800,
+                                                  ),
+                                                ),
                                               ],
                                             ),
                                           ],
@@ -153,9 +202,16 @@ class _DetailScreenState extends State<DetailScreen> {
                                   right: 0,
                                   child: Row(
                                     children: [
-                                      Icon(Icons.favorite_outline, color: Colors.white70, size: 15),
+                                      Icon(
+                                        Icons.favorite_outline,
+                                        color: Colors.white70,
+                                        size: 15,
+                                      ),
                                       const SizedBox(width: 4),
-                                      Text(widget.product['likes'].toString(), style: TextStyle(color: Colors.white70))
+                                      Text(
+                                        widget.product['likes'].toString(),
+                                        style: TextStyle(color: Colors.white70),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -190,7 +246,9 @@ class _DetailScreenState extends State<DetailScreen> {
                               },
                               style: SegmentedButton.styleFrom(
                                 backgroundColor: const Color(0x3D767680),
-                                selectedBackgroundColor: const Color(0xFF636366),
+                                selectedBackgroundColor: const Color(
+                                  0xFF636366,
+                                ),
                                 foregroundColor: Colors.white,
                                 selectedForegroundColor: Colors.white,
                                 maximumSize: const Size(100, 26),
@@ -198,9 +256,16 @@ class _DetailScreenState extends State<DetailScreen> {
                                   borderRadius: BorderRadius.circular(7),
                                 ),
 
-                                side: const BorderSide(color: Color(0x3D767680), width: 1),
-                                textStyle: theme.textTheme.labelMedium!.copyWith(height: 1),
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                                side: const BorderSide(
+                                  color: Color(0x3D767680),
+                                  width: 1,
+                                ),
+                                textStyle: theme.textTheme.labelMedium!
+                                    .copyWith(height: 1),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 0,
+                                ),
                               ),
                               showSelectedIcon: false,
                             ),
@@ -216,7 +281,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                     }
                                   },
                                 ),
-                                Text('$_quantity', style: const TextStyle(color: Colors.white, fontSize: 17)),
+                                Text(
+                                  '$_quantity',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                  ),
+                                ),
                                 StyledIconButton(
                                   icon: Icons.add,
                                   onPressed: () {
@@ -226,7 +297,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                   },
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                         const SizedBox(height: 30),

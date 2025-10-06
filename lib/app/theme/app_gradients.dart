@@ -23,15 +23,18 @@ class AppGradients {
   static const Gradient buttonPrimaryRadial = RadialGradient(
     center: Alignment(0.9, 0.4),
     radius: 2.0,
-    colors: [Color.fromRGBO(246, 158, 163, 1), Color.fromRGBO(233, 112, 196, 1)],
-
+    colors: [
+      Color.fromRGBO(246, 158, 163, 1),
+      Color.fromRGBO(233, 112, 196, 1),
+    ],
   );
 
   static const Gradient buttonPrimaryLinearOverlay = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      Color.fromRGBO(254, 200, 241, 1), Color.fromRGBO(237, 146, 215, 0)
+      Color.fromRGBO(254, 200, 241, 1),
+      Color.fromRGBO(237, 146, 215, 0),
     ],
     stops: [0.0, 0.4],
   );
@@ -39,14 +42,18 @@ class AppGradients {
   static const Gradient buttonSecondaryRadial = RadialGradient(
     center: Alignment(0.9, 0.4),
     radius: 2.0,
-    colors: [Color.fromRGBO(144, 140, 245, 1), Color.fromRGBO(187, 141, 225, 1)],
+    colors: [
+      Color.fromRGBO(144, 140, 245, 1),
+      Color.fromRGBO(187, 141, 225, 1),
+    ],
   );
 
   static const Gradient buttonSecondaryLinearOverlay = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      Color.fromRGBO(254, 200, 241, 1), Color.fromRGBO(237, 146, 215, 0)
+      Color.fromRGBO(254, 200, 241, 1),
+      Color.fromRGBO(237, 146, 215, 0),
     ],
     stops: [0.0, 0.4],
   );

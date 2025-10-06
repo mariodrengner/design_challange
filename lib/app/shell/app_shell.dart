@@ -11,12 +11,7 @@ class AppShell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Stack(
-        children: [
-          const AppBackground(),
-          child,
-        ],
-      ),
+      body: Stack(children: [const AppBackground(), child]),
     );
   }
 }

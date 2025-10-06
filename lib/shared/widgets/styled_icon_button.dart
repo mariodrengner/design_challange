@@ -17,9 +17,7 @@ class StyledIconButton extends StatelessWidget {
       constraints: BoxConstraints.tight(const Size(30, 30)),
       style: IconButton.styleFrom(
         backgroundColor: Colors.white.withAlpha(10),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         side: const BorderSide(color: Colors.white12, width: 1),
       ),
       icon: Icon(icon, color: Colors.white70, size: 20),

@@ -11,10 +11,15 @@ class AppAssets {
   static const String iceCreamStick = 'assets/images/icecream_stick.png';
   static const String snackText = 'assets/images/snack_text.svg';
 
-  static const String ingredientsGlutenFree = 'assets/images/ingredients/gluten-free.png';
-  static const String ingredientsSugarFree = 'assets/images/ingredients/sugar-free.png';
-  static const String ingredientsLowFat = 'assets/images/ingredients/low-fat.png';
-  static const String ingredientsCalories = 'assets/images/ingredients/calories.png';
+  static const String ingredientsGlutenFree =
+      'assets/images/ingredients/gluten-free.png';
+  static const String ingredientsSugarFree =
+      'assets/images/ingredients/sugar-free.png';
+  static const String ingredientsLowFat =
+      'assets/images/ingredients/low-fat.png';
+  static const String ingredientsCalories =
+      'assets/images/ingredients/calories.png';
 
   static const String food = 'assets/images/food.svg';
+  static const String currency = 'assets/images/currency.svg';
 }

@@ -15,7 +15,8 @@ class App extends StatelessWidget {
     initialLocation: '/',
     routes: [
       ShellRoute(
-        builder: (context, state, child) => AppShell(shellState: state, child: child),
+        builder: (context, state, child) =>
+            AppShell(shellState: state, child: child),
         routes: [
           GoRoute(
             path: AppRoutes.start.path,
@@ -38,7 +39,7 @@ class App extends StatelessWidget {
                   );
                 },
               ),
-            ]
+            ],
           ),
         ],
       ),
@@ -49,6 +50,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: AppTheme.light,
-      debugShowCheckedModeBanner: false, routerConfig: _router);
+      debugShowCheckedModeBanner: false,
+      routerConfig: _router,
+    );
   }
 }

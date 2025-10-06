@@ -30,13 +30,15 @@ class GlassCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bgColor = Color.fromARGB((opacity * 255).round(), 255, 255, 255);
-    final borderColor = Color.fromARGB((borderOpacity * 255).round(), 255, 255, 255);
+    final borderColor = Color.fromARGB(
+      (borderOpacity * 255).round(),
+      255,
+      255,
+      255,
+    );
     final effectiveBorderRadius = borderRadius ?? BorderRadius.circular(24);
 
-    Widget contentLayer = Padding(
-      padding: padding,
-      child: child,
-    );
+    Widget contentLayer = Padding(padding: padding, child: child);
 
     if (onTap != null) {
       contentLayer = Material(
@@ -54,10 +56,7 @@ class GlassCard extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         color: bgColor,
-        child: Container(
-          decoration: decoration,
-          child: contentLayer,
-        ),
+        child: Container(decoration: decoration, child: contentLayer),
       ),
     );
 
@@ -104,26 +103,28 @@ class _TiltedWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return ClipPath(
-        clipper: _SvgGlassTiltClipper(),
-        child: Stack(
-          children: [
-            child,
-            Positioned.fill(
-              child: IgnorePointer(
-                child: CustomPaint(
-                  painter: _SvgBorderPainter(
-                    borderColor: borderColor,
-                    borderWidth: borderWidth,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ClipPath(
+          clipper: _SvgGlassTiltClipper(),
+          child: Stack(
+            children: [
+              child,
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: CustomPaint(
+                    painter: _SvgBorderPainter(
+                      borderColor: borderColor,
+                      borderWidth: borderWidth,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      );
-    });
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -131,10 +132,7 @@ class _SvgBorderPainter extends CustomPainter {
   final Color borderColor;
   final double borderWidth;
 
-  _SvgBorderPainter({
-    required this.borderColor,
-    required this.borderWidth,
-  });
+  _SvgBorderPainter({required this.borderColor, required this.borderWidth});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -167,7 +165,9 @@ class _RectBorderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rrect = borderRadius.toRRect(Rect.fromLTWH(0, 0, size.width, size.height));
+    final rrect = borderRadius.toRRect(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+    );
     final paint = Paint()
       ..color = borderColor
       ..style = PaintingStyle.stroke
@@ -179,7 +179,9 @@ class _RectBorderPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _RectBorderPainter old) =>
-      old.borderColor != borderColor || old.borderWidth != borderWidth || old.borderRadius != borderRadius;
+      old.borderColor != borderColor ||
+      old.borderWidth != borderWidth ||
+      old.borderRadius != borderRadius;
 }
 
 class _SvgGlassTiltClipper extends CustomClipper<Path> {
@@ -249,7 +251,14 @@ class _SvgGlassTiltClipper extends CustomClipper<Path> {
     path.lineTo(currentX * sx, currentY * sy);
 
     // SVG Command: C 47.539 714.796 .726 673.029 .726 619.275
-    path.cubicTo(47.539 * sx, 714.796 * sy, 0.726 * sx, 673.029 * sy, 0.726 * sx, 619.275 * sy);
+    path.cubicTo(
+      47.539 * sx,
+      714.796 * sy,
+      0.726 * sx,
+      673.029 * sy,
+      0.726 * sx,
+      619.275 * sy,
+    );
     currentX = 0.726;
     currentY = 619.275;
 

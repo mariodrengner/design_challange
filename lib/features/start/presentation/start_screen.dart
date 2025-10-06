@@ -16,14 +16,28 @@ class StartScreen extends StatelessWidget {
 
     return Stack(
       children: [
-        Image.asset(width: size.width, height: size.height, fit: BoxFit.cover, AppAssets.bgStart),
+        Image.asset(
+          width: size.width,
+          height: size.height,
+          fit: BoxFit.cover,
+          AppAssets.bgStart,
+        ),
         Transform.translate(
           offset: Offset(size.width * 0.13, size.height * 0.12),
-          child: Image.asset(width: 540, height: 540, fit: BoxFit.cover, AppAssets.cupCakeChick),
+          child: Image.asset(
+            width: 540,
+            height: 540,
+            fit: BoxFit.cover,
+            AppAssets.cupCakeChick,
+          ),
         ),
         Transform.translate(
           offset: Offset(0, size.height * 0.52),
-          child: SvgPicture.asset(AppAssets.snackText, width: size.width, fit: BoxFit.cover),
+          child: SvgPicture.asset(
+            AppAssets.snackText,
+            width: size.width,
+            fit: BoxFit.cover,
+          ),
         ),
         Column(
           children: [
@@ -32,14 +46,24 @@ class StartScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: GlassCard(
                 opacity: 0.02,
-                padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 30.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 25.0,
+                  vertical: 30.0,
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('Feeling Snackish Today?', style: theme.textTheme.displayMedium, textAlign: TextAlign.center),
+                    Text(
+                      'Feeling Snackish Today?',
+                      style: theme.textTheme.displayMedium,
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 8),
-                    Text('Explore Angi’s most popular snack selection and get instantly happy.',
-                        style: theme.textTheme.bodyLarge, textAlign: TextAlign.center),
+                    Text(
+                      'Explore Angi’s most popular snack selection and get instantly happy.',
+                      style: theme.textTheme.bodyLarge,
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
