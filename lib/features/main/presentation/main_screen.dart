@@ -1,14 +1,11 @@
 import 'package:design_challenge/app/assets.dart';
 import 'package:design_challenge/app/theme/app_colors.dart';
-import 'package:design_challenge/features/main/data/snack_data.dart' show productData;
 import 'package:design_challenge/features/main/presentation/widgets/recommended_snacks.dart';
-import 'package:design_challenge/routes/app_routes.dart';
 import 'package:design_challenge/shared/widgets/glass_card.dart';
 import 'package:design_challenge/shared/widgets/gradient_button.dart';
 import 'package:design_challenge/shared/widgets/price_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 import '/shared/widgets/glass_chip.dart';
 
